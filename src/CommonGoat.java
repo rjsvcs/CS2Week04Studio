@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class CommonGoat implements Goat {
+public class CommonGoat implements Goat {
     private String name;
     private int maxHP;
     private int currentHP;
@@ -17,5 +17,43 @@ public abstract class CommonGoat implements Goat {
         this.type = type;
 
         currentHP = maxHP;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public Attack attack() {
+        return null;
+    }
+
+    @Override
+    public void attacked(Attack attack) {
+
+    }
+
+    @Override
+    public void heal(int amount) {
+        currentHP += amount;
+        currentHP = currentHP <= maxHP ? currentHP : maxHP;
+    }
+
+    @Override
+    public boolean isConscious() {
+        return currentHP > 0;
+    }
+
+    protected int getMaxAttack() {
+        return maxAttack;
+    }
+
+    protected int getMinAttack() {
+        return minAttack;
+    }
+
+    protected DamageType getType() {
+        return type;
     }
 }

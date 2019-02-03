@@ -1,11 +1,11 @@
-public class Mage implements Goat {
+public class Fighter implements Goat {
     private String name;
     private int maxHP;
     private int currentHP;
 
-    public Mage(String name) {
+    public Fighter(String name) {
         this.name = name;
-        maxHP = 100;
+        maxHP = 150;
         currentHP = maxHP;
     }
 
@@ -16,19 +16,17 @@ public class Mage implements Goat {
 
     @Override
     public Attack attack() {
-        int[] hits = new int[Goat.randomNumber(3, 5)];
-        for(int i=0; i<hits.length; i++) {
-            hits[i] = Goat.randomNumber(6, 12);
-        }
-        return new Attack("Magic Missiles", hits, DamageType.MAGICAL);
+        int[] hits = new int[1];
+        hits[0] = Goat.randomNumber(15, 35);
+        return new Attack("Cleave", hits, DamageType.PHYSICAL);
     }
 
     @Override
     public void attacked(Attack attack) {
         double adjust = 1;
-        if(attack.getType() == DamageType.MAGICAL) {
+        if(attack.getType() == DamageType.PHYSICAL) {
             adjust = 0.75;
-        } else if(attack.getType() == DamageType.PHYSICAL) {
+        } else if(attack.getType() == DamageType.MAGICAL) {
             adjust = 1.25;
         }
 

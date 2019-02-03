@@ -1,23 +1,17 @@
-public class Fighter implements Goat {
-    private String name;
-    private int maxHP;
-    private int currentHP;
+public class Fighter extends CommonGoat {
+    // no magic numbers! use constants.
+    private static final int BASE_HP = 150;
+    private static final int MIN_ATTACK = 15;
+    private static final int MAX_ATTACK = 35;
 
     public Fighter(String name) {
-        this.name = name;
-        maxHP = 150;
-        currentHP = maxHP;
-    }
-
-    @Override
-    public String getName() {
-        return name;
+        super(name, BASE_HP, MIN_ATTACK, MAX_ATTACK);
     }
 
     @Override
     public Attack attack() {
         int[] hits = new int[1];
-        hits[0] = Goat.randomNumber(15, 35);
+        hits[0] = Goat.randomNumber(getMinAttack(), getMaxAttack());
         return new Attack("Cleave", hits, DamageType.PHYSICAL);
     }
 
@@ -31,20 +25,7 @@ public class Fighter implements Goat {
         }
 
         for(int hit : attack.getHits()) {
-            currentHP -= hit;
+            harm((int)(hit * adjust));
         }
-
-        currentHP = currentHP >= 0 ? currentHP : 0;
-    }
-
-    @Override
-    public void heal(int amount) {
-        currentHP += amount;
-        currentHP = currentHP <= maxHP ? currentHP : maxHP;
-    }
-
-    @Override
-    public boolean isConscious() {
-        return currentHP > 0;
     }
 }

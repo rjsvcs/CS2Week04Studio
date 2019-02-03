@@ -1,24 +1,20 @@
-public class Mage implements Goat {
-    private String name;
-    private int maxHP;
-    private int currentHP;
+public class Mage extends CommonGoat {
+    // no magic numbers! use constants.
+    private static final int BASE_HP = 100;
+    private static final int MIN_ATTACK = 6;
+    private static final int MAX_ATTACK = 12;
+    private static final int MIN_HITS = 3;
+    private static final int MAX_HITS = 5;
 
     public Mage(String name) {
-        this.name = name;
-        maxHP = 100;
-        currentHP = maxHP;
-    }
-
-    @Override
-    public String getName() {
-        return name;
+        super(name, BASE_HP, MIN_ATTACK, MAX_ATTACK);
     }
 
     @Override
     public Attack attack() {
-        int[] hits = new int[Goat.randomNumber(3, 5)];
+        int[] hits = new int[Goat.randomNumber(MIN_HITS, MAX_HITS)];
         for(int i=0; i<hits.length; i++) {
-            hits[i] = Goat.randomNumber(6, 12);
+            hits[i] = Goat.randomNumber(getMinAttack(), getMaxAttack());
         }
         return new Attack("Magic Missiles", hits, DamageType.MAGICAL);
     }
@@ -33,20 +29,7 @@ public class Mage implements Goat {
         }
 
         for(int hit : attack.getHits()) {
-            currentHP -= hit;
+            harm((int)(hit * adjust));
         }
-
-        currentHP = currentHP >= 0 ? currentHP : 0;
-    }
-
-    @Override
-    public void heal(int amount) {
-        currentHP += amount;
-        currentHP = currentHP <= maxHP ? currentHP : maxHP;
-    }
-
-    @Override
-    public boolean isConscious() {
-        return currentHP > 0;
     }
 }

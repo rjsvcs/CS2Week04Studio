@@ -16,15 +16,15 @@ public class Mage extends CommonGoat {
         for(int i=0; i<hits.length; i++) {
             hits[i] = Goat.randomNumber(getMinAttack(), getMaxAttack());
         }
-        return new Attack("Magic Missiles", hits, DamageType.MAGICAL);
+        return new Attack("Magic Missiles", hits, Damage.MAGICAL);
     }
 
     @Override
     public void attacked(Attack attack) {
         double adjust = 1;
-        if(attack.getType() == DamageType.MAGICAL) {
+        if(attack.getType() == Damage.MAGICAL) {
             adjust = 0.75;
-        } else if(attack.getType() == DamageType.PHYSICAL) {
+        } else if(attack.getType() == Damage.PHYSICAL) {
             adjust = 1.25;
         }
 

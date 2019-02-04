@@ -12,6 +12,6 @@ public class Cleric extends CommonGoat {
     public Attack attack() {
         int[] hits = new int[1];
         hits[0] = Goat.randomNumber(getMinAttack(), getMaxAttack());
-        return new Attack("Bell, Book & Candle", hits, DamageType.HOLY);
+        return new Attack("Bell, Book & Candle", hits, Damage.HOLY);
     }
 }

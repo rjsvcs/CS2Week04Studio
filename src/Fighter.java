@@ -12,15 +12,15 @@ public class Fighter extends CommonGoat {
     public Attack attack() {
         int[] hits = new int[1];
         hits[0] = Goat.randomNumber(getMinAttack(), getMaxAttack());
-        return new Attack("Cleave", hits, DamageType.PHYSICAL);
+        return new Attack("Cleave", hits, Damage.PHYSICAL);
     }
 
     @Override
     public void attacked(Attack attack) {
         double adjust = 1;
-        if(attack.getType() == DamageType.PHYSICAL) {
+        if(attack.getType() == Damage.PHYSICAL) {
             adjust = 0.75;
-        } else if(attack.getType() == DamageType.MAGICAL) {
+        } else if(attack.getType() == Damage.MAGICAL) {
             adjust = 1.25;
         }
 

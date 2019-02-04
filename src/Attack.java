@@ -4,9 +4,9 @@
 public class Attack {
     private String name;
     private int[] hits;
-    private DamageType type;
+    private Damage type;
 
-    public Attack(String name, int[] hits, DamageType type) {
+    public Attack(String name, int[] hits, Damage type) {
         this.name = name;
         this.hits = hits;
         this.type = type;
@@ -20,7 +20,7 @@ public class Attack {
         return hits;
     }
 
-    public DamageType getType() {
+    public Damage getType() {
         return type;
     }
 }

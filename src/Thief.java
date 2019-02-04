@@ -16,6 +16,6 @@ public class Thief extends CommonGoat {
         for(int i=0; i<hits.length; i++) {
             hits[i] = Goat.randomNumber(getMinAttack(), getMaxAttack());
         }
-        return new Attack("Stabbity-Stab", hits, DamageType.PHYSICAL);
+        return new Attack("Stabbity-Stab", hits, Damage.PHYSICAL);
     }
 }

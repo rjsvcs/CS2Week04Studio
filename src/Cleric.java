@@ -14,4 +14,9 @@ public class Cleric extends CommonGoat {
         hits[0] = Goat.randomNumber(getMinAttack(), getMaxAttack());
         return new Attack("Bell, Book & Candle", hits, Damage.HOLY);
     }
+
+    public void healAlly(Goat ally) {
+        int amount = Goat.randomNumber(25, 75);
+        ally.heal(amount);
+    }
 }

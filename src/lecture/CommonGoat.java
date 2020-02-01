@@ -1,4 +1,4 @@
-import java.util.Random;
+package lecture;
 
 public abstract class CommonGoat implements Goat {
     private String name;

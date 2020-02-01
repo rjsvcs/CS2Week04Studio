@@ -1,3 +1,5 @@
+package lecture;
+
 public class Thief extends CommonGoat {
     // no magic numbers! use constants.
     private static final int BASE_HP = 125;

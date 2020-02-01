@@ -1,3 +1,5 @@
+package lecture;
+
 /**
  * Represents an attack in a game of Goats vs. Trolls
  */

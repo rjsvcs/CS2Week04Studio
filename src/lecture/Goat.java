@@ -1,7 +1,9 @@
+package lecture;
+
 import java.util.Random;
 
 /**
- * The interface that defines behavior common to all Goat characters.
+ * The interface that defines behavior common to all lecture.Goat characters.
  */
 public interface Goat {
     /**
@@ -23,7 +25,7 @@ public interface Goat {
 
     /**
      * Returns the name of the {@link Goat}
-     * @return The {@link Goat Goat's} name.
+     * @return The {@link Goat lecture.Goat's} name.
      */
     String getName();
 
@@ -41,10 +43,10 @@ public interface Goat {
     void attacked(Attack attack);
 
     /**
-     * Increases the {@link Goat Goat's} hit points by the specified amount.
-     * The {@link Goat Goat's} hit points should not exceed the maximum.
+     * Increases the {@link Goat lecture.Goat's} hit points by the specified amount.
+     * The {@link Goat lecture.Goat's} hit points should not exceed the maximum.
      *
-     * @param amount The amount by which the {@link Goat Goat's} hit points
+     * @param amount The amount by which the {@link Goat lecture.Goat's} hit points
      *               should be increased.
      */
     void heal(int amount);

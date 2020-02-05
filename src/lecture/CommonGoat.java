@@ -2,18 +2,14 @@ package lecture;
 
 public abstract class CommonGoat implements Goat {
     private String name;
-    private int maxHP;
-    private int currentHP;
-    private int minAttack;
-    private int maxAttack;
+    private int maxHitPoints;
+    private int currentHitPoints;
 
-    public CommonGoat(String name, int maxHP, int minAttack, int maxAttack) {
+    public CommonGoat(String name, int maxHitPoints) {
         this.name = name;
-        this.maxHP = maxHP;
-        this.maxAttack = maxAttack;
-        this.minAttack = minAttack;
+        this.maxHitPoints = maxHitPoints;
 
-        currentHP = maxHP;
+        currentHitPoints = maxHitPoints;
     }
 
     @Override
@@ -23,32 +19,19 @@ public abstract class CommonGoat implements Goat {
 
     @Override
     public void heal(int amount) {
-        currentHP += amount;
-        currentHP = currentHP <= maxHP ? currentHP : maxHP;
+        currentHitPoints += amount;
+        currentHitPoints = Math.min(currentHitPoints, maxHitPoints);
     }
 
     @Override
     public boolean isConscious() {
-        return currentHP > 0;
+        return currentHitPoints > 0;
     }
 
-    @Override
-    public void attacked(Attack attack) {
+    protected void handleAttack(Attack attack, double modifier) {
         for(int hit : attack.getHits()) {
-            harm(hit);
+            currentHitPoints -= (hit * modifier);
         }
-    }
-
-    protected void harm(int amount) {
-        currentHP -= amount;
-        currentHP = currentHP >= 0 ? currentHP : 0;
-    }
-
-    protected int getMaxAttack() {
-        return maxAttack;
-    }
-
-    protected int getMinAttack() {
-        return minAttack;
+        currentHitPoints = Math.max(currentHitPoints, 0);
     }
 }
